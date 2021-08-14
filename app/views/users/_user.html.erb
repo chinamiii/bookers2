@@ -1,3 +1,17 @@
-  <h3 class="profile-name"><%= user.name %></h3>
-  <p><%= user.introduction %></p>
-  <%= image_tag('sample-author1.jpg') %>
+
+  <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+  <table class="table">
+    <tbody>
+       <tr>
+         <ht>name</ht>
+         <ht><%= user.name %></ht>
+       </tr>
+         <tr></tr>
+         <th><%= user.introduction %></th>
+         <th></th>
+       </tr>
+         <% if @user.id == current_user.id %>
+        <p><%= link_to "編集", edit_user_path(@user) %></p>
+         <% end %>
+    </tbody>
+  </table>

@@ -13,13 +13,21 @@
  <table class='table'>
  <tr>
   <td>
+
+  </td>
+    <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+  <td>
     <%= @book.title %>
   </td>
 
-  <td><%= @book.body %></td>
+  <td>
+    <%= @book.body %>
+  </td>
 
 
  <%= link_to "Destroy",book_path(@book), method: :delete %>
+
+ <%= link_to "Update", edit_book_path(@book) %>
 
 
  </tr>
