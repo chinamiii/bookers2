@@ -1,35 +1,40 @@
-<h2>User info</h2>
-  <%= render 'users/user', user: @user %>
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-3">
+      <%= render 'users/user', user: @user %>
 
-<h1>New Book</h1>
+      <%= render 'books/book', book: @newbook %>
+    </div>
 
-<%= render 'books/book', book: @newbook %>
+      <div class="col-8 offset-1">
 
+        <h2>Users</h2>
 
+        <table class='table table-hover table-inverse'>
+          <thead>
+            <tr>
+              <th>image</th>
 
-<h2>Users</h2>
+              <th>name</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
 
-<table class='table table-hover table-inverse'>
-  <thead>
-    <tr>
-      <th></th>
-      <th>image</th>
-       
-      <th>name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+              <tbody>
 
-  <tbody>
+                <% @users.each do |user| %>
+                 <tr>
 
-    <% @users.each do |user| %>
-     <tr>
+                   <td><%= attachment_image_tag user, :profile_image, format: "jpeg", fallback: "no_image.jpg", size: "40x40" %></td>
 
-      <td><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
+                   <td><%= user.name %></td>
 
-      <td><%= @user.name %></td>
+                   <td><%= link_to "Show",user_path(user) %></td>
 
-    </tr>
-    <% end %>
- </tbody>
-</table>
+                 </tr>
+                <% end %>
+              </tbody>
+          </table>
+    </div>
+  </div>
+</div>
